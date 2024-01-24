@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://l8x26cvum7uc"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_2cf00"]
+[ext_resource type="Texture2D" uid="uid://coaf4c2mx312c" path="res://share.png" id="2_gmsde"]
+[ext_resource type="Script" path="res://addons/GodotAndroidSharePlugin/Share.gd" id="3_i1lxr"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_2cf00")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+texture = ExtResource("2_gmsde")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Share Demo"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ShareTextureButton" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Share Texture"
+
+[node name="ShareViewportButton" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Share Viewport"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 300)
+layout_mode = 2
+
+[node name="Share" type="Node" parent="."]
+script = ExtResource("3_i1lxr")
+
+[connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/VBoxContainer/ShareTextureButton" to="." method="_on_share_texture_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/VBoxContainer/ShareViewportButton" to="." method="_on_share_viewport_button_pressed"]
