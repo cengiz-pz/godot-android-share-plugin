@@ -20,6 +20,10 @@ There are 2 ways to install the `Share` plugin into your project:
 Steps:
 - search for and select the `Share` plugin in Godot Editor
 - click `Download` button
+- on the installation dialog...
+  - click `Change Install Folder` button and select your project's `addons` directory
+  - uncheck `Ignore asset root` checkbox
+  - click `Install` button
 - enable the plugin via `Project->Export...->Android` in the Godot Editor
 
 ### ![](share/addon_template/icon.png?raw=true) Installing manually
