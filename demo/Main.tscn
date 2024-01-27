@@ -24,7 +24,7 @@ theme_override_constants/separation = 20
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 texture = ExtResource("2_gmsde")
-expand_mode = 1
+expand_mode = 3
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer"]
