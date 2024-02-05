@@ -9,7 +9,7 @@ plugins {
 val pluginName = "GodotAndroidSharePlugin"
 val pluginPackageName = "org.godotengine.plugin.android.share"
 val godotVersion = "4.2.1"
-var pluginVersion = "1.0"
+var pluginVersion = "1.1"
 var demoAddOnsDirectory = "../demo/addons"
 var templateDirectory = "addon_template"
 
