@@ -52,15 +52,12 @@ class AndroidExportPlugin extends EditorExportPlugin:
 	func _get_android_manifest_application_element_contents(platform: EditorExportPlatform, debug: bool) -> String:
 		var __contents: String = ""
 
-		#if platform is EditorExportPlatformAndroid:
-			#var __unique_name: String = platform.get("package/unique_name")
-#
-			#__contents += "<provider android:name=\"%s.ShareFileProvider\">\n" % PLUGIN_PACKAGE
-			#__contents += "\t\tandroid:grantUriPermissions=\"true\"\n"
-			#__contents += "\t\tandroid:exported=\"false\"\n"
-			#__contents += "\t\tandroid:authorities=\"%s.sharefileprovider\"\n" % __unique_name
-			#__contents += "\t\tandroid:grantUriPermissions=\"true\">\n"
-			#__contents += "\t<meta-data android:name=\"android.support.FILE_PROVIDER_PATHS\" android:resource=\"@xml/file_provider_paths\"/>\n"
-			#__contents += "</provider>\n"
+		if platform is EditorExportPlatformAndroid:
+			__contents += "<provider android:name=\"%s.ShareFileProvider\"\n" % PLUGIN_PACKAGE
+			__contents += "\t\tandroid:exported=\"false\"\n"
+			__contents += "\t\tandroid:authorities=\"%s.sharefileprovider\"\n" % get_option("package/unique_name")
+			__contents += "\t\tandroid:grantUriPermissions=\"true\">\n"
+			__contents += "\t<meta-data android:name=\"android.support.FILE_PROVIDER_PATHS\" android:resource=\"@xml/file_provider_paths\"/>\n"
+			__contents += "</provider>\n"
 
 		return __contents
