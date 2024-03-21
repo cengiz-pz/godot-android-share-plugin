@@ -8,8 +8,10 @@ Godot Android Share plugin allows sharing of text and images on Android platform
 _Based on Shin-NiL's [Godot Share plugin](https://github.com/Shin-NiL/Godot-Android-Share-Plugin)_
 
 ## ![](share/addon_template/icon.png?raw=true) Prerequisites
-Follow instructions on the following page to create a custom Android build
-- [Create custom Android build](https://docs.godotengine.org/en/stable/tutorials/export/android_custom_build.html)
+Follow instructions on the following page to create a custom Android gradle build
+- [Create custom Android gradle build](https://docs.godotengine.org/en/stable/tutorials/export/android_gradle_build.html)
+
+- Create an `addons` directory in your project's root level.
 
 ## ![](share/addon_template/icon.png?raw=true) Installation
 There are 2 ways to install the `Share` plugin into your project:
