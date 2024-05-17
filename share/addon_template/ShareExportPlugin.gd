@@ -1,3 +1,7 @@
+#
+# © 2024-present https://github.com/cengiz-pz
+#
+
 @tool
 extends EditorPlugin
 
@@ -6,6 +10,16 @@ const PLUGIN_PARENT_NODE_TYPE = "Node"
 const PLUGIN_NAME: String = "@pluginName@"
 const PLUGIN_VERSION: String = "@pluginVersion@"
 const PLUGIN_PACKAGE: String = "@pluginPackage@"
+const PLUGIN_DEPENDENCIES: Array = [ @pluginDependencies@ ]
+
+const PROVIDER_TAG = """
+<provider android:name="%s.ShareFileProvider"
+		android:exported="false"
+		android:authorities="%s.sharefileprovider"
+		android:grantUriPermissions="true">
+	<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_provider_paths"/>
+</provider>
+"""
 
 var export_plugin: AndroidExportPlugin
 
@@ -44,20 +58,8 @@ class AndroidExportPlugin extends EditorExportPlugin:
 
 
 	func _get_android_dependencies(platform: EditorExportPlatform, debug: bool) -> PackedStringArray:
-		return PackedStringArray([
-			"androidx.appcompat:appcompat:1.6.1"
-		])
+		return PackedStringArray(PLUGIN_DEPENDENCIES)
 
 
 	func _get_android_manifest_application_element_contents(platform: EditorExportPlatform, debug: bool) -> String:
-		var __contents: String = ""
-
-		if platform is EditorExportPlatformAndroid:
-			__contents += "<provider android:name=\"%s.ShareFileProvider\"\n" % PLUGIN_PACKAGE
-			__contents += "\t\tandroid:exported=\"false\"\n"
-			__contents += "\t\tandroid:authorities=\"%s.sharefileprovider\"\n" % get_option("package/unique_name")
-			__contents += "\t\tandroid:grantUriPermissions=\"true\">\n"
-			__contents += "\t<meta-data android:name=\"android.support.FILE_PROVIDER_PATHS\" android:resource=\"@xml/file_provider_paths\"/>\n"
-			__contents += "</provider>\n"
-
-		return __contents
+		return PROVIDER_TAG % [PLUGIN_PACKAGE, get_option("package/unique_name")]

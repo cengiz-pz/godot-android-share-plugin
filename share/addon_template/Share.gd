@@ -1,3 +1,7 @@
+#
+# © 2024-present https://github.com/cengiz-pz
+#
+
 @tool
 class_name Share
 extends Node
@@ -28,14 +32,27 @@ func _update_plugin() -> void:
 
 func share_text(a_title: String, a_subject: String, a_content: String) -> void:
 	if _plugin_singleton != null:
-		_plugin_singleton.shareText(a_title, a_subject, a_content)
+		_plugin_singleton.share(
+			SharedData.new()
+				.set_title(a_title)
+				.set_subject(a_subject)
+				.set_content(a_content)
+				.get_raw_data()
+		)
 	else:
 		printerr("%s plugin not initialized" % PLUGIN_SINGLETON_NAME)
 
 
 func share_image(a_path: String, a_title: String, a_subject: String, a_content: String) -> void:
 	if _plugin_singleton != null:
-		_plugin_singleton.shareImage(a_path, a_title, a_subject, a_content)
+		_plugin_singleton.share(
+			SharedData.new()
+				.set_title(a_title)
+				.set_subject(a_subject)
+				.set_content(a_content)
+				.set_image_path(a_path)
+				.get_raw_data()
+		)
 	else:
 		printerr("%s plugin not initialized" % PLUGIN_SINGLETON_NAME)
 
@@ -44,7 +61,14 @@ func share_texture(a_texture: Texture2D, a_title: String, a_subject: String, a_c
 	if _plugin_singleton != null:
 		var __image: Image = a_texture.get_image()
 		__image.save_png(_temp_image_path)
-		_plugin_singleton.shareImage(_temp_image_path, a_title, a_subject, a_content)
+		_plugin_singleton.share(
+			SharedData.new()
+				.set_title(a_title)
+				.set_subject(a_subject)
+				.set_content(a_content)
+				.set_image_path(_temp_image_path)
+				.get_raw_data()
+		)
 	else:
 		printerr("%s plugin not initialized" % PLUGIN_SINGLETON_NAME)
 
@@ -55,6 +79,13 @@ func share_viewport(a_viewport: Viewport, a_title: String, a_subject: String, a_
 		if a_flip_y:
 			__image.flip_y()
 		__image.save_png(_temp_image_path)
-		_plugin_singleton.shareImage(_temp_image_path, a_title, a_subject, a_content)
+		_plugin_singleton.share(
+			SharedData.new()
+				.set_title(a_title)
+				.set_subject(a_subject)
+				.set_content(a_content)
+				.set_image_path(_temp_image_path)
+				.get_raw_data()
+		)
 	else:
 		printerr("%s plugin not initialized" % PLUGIN_SINGLETON_NAME)
