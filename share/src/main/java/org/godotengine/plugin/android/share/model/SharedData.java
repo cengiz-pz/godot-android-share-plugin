@@ -11,6 +11,7 @@ public class SharedData {
 	private static String DATA_KEY_SUBJECT = "subject";
 	private static String DATA_KEY_CONTENT = "content";
 	private static String DATA_KEY_IMAGE_PATH = "image_path";
+	private static String DATA_KEY_MIME_TYPE = "mime_type";
 
 	private Dictionary data;
 
@@ -32,5 +33,9 @@ public class SharedData {
 
 	public String getImagePath() {
 		return (String) data.get(DATA_KEY_IMAGE_PATH);
+	}
+
+	public String getMimeType() {
+		return (String) data.get(DATA_KEY_MIME_TYPE);
 	}
 }

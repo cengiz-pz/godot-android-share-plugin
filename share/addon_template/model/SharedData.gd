@@ -9,6 +9,7 @@ const DATA_KEY_TITLE = "title"
 const DATA_KEY_SUBJECT = "subject"
 const DATA_KEY_CONTENT = "content"
 const DATA_KEY_IMAGE_PATH = "image_path"
+const DATA_KEY_MIME_TYPE = "mime_type"
 
 var _data: Dictionary
 
@@ -34,6 +35,11 @@ func set_content(a_content: String) -> SharedData:
 
 func set_image_path(a_image_path: String) -> SharedData:
 	_data[DATA_KEY_IMAGE_PATH] = a_image_path
+	return self
+
+
+func set_mime_type(a_mime_type: String) -> SharedData:
+	_data[DATA_KEY_MIME_TYPE] = a_mime_type
 	return self
 
 

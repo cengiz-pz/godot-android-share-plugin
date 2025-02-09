@@ -89,3 +89,18 @@ func share_viewport(a_viewport: Viewport, a_title: String, a_subject: String, a_
 		)
 	else:
 		printerr("%s plugin not initialized" % PLUGIN_SINGLETON_NAME)
+
+
+func share_file(a_path: String, a_mime_type: String, a_title: String, a_subject: String, a_content: String) -> void:
+	if _plugin_singleton != null:
+		_plugin_singleton.share(
+			SharedData.new()
+				.set_title(a_title)
+				.set_subject(a_subject)
+				.set_content(a_content)
+				.set_mime_type(a_mime_type)
+				.set_image_path(a_path)
+				.get_raw_data()
+		)
+	else:
+		printerr("%s plugin not initialized" % PLUGIN_SINGLETON_NAME)
