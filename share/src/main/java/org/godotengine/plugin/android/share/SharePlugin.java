@@ -28,7 +28,6 @@ public class SharePlugin extends GodotPlugin {
 	private static final String LOG_TAG = "godot::" + CLASS_NAME;
 	private static final String FILE_PROVIDER = ".sharefileprovider";
 	private static final String MIME_TYPE_TEXT = "text/plain";
-	private static final String MIME_TYPE_IMAGE = "image/*";
 
 	private Activity activity;
 	private String authority;
@@ -46,7 +45,6 @@ public class SharePlugin extends GodotPlugin {
 		shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, sharedData.getSubject());
 		shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, sharedData.getContent());
 
-		String mime_type = sharedData.getMimeType();
 		String path = sharedData.getImagePath();
 		if (path != null && !path.isEmpty()) {
 			File f = new File(path);
@@ -59,20 +57,17 @@ public class SharePlugin extends GodotPlugin {
 				return;
 			}
 
-			if (mime_type == null) {
-				// override mime type if none has been provided by the user
-				mime_type = MIME_TYPE_IMAGE;
-			}
 			shareIntent.setClipData(ClipData.newRawUri("", uri));
 			shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
 			shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 		}
 
+		String mime_type = sharedData.getMimeType();
 		if (mime_type != null) {
-			shareIntent.setType(mime_type);
-		} else {
-			shareIntent.setType(MIME_TYPE_TEXT);
+			// only used as fallback
+			mime_type = MIME_TYPE_TEXT;
 		}
+		shareIntent.setType(mime_type);
 
 		activity.startActivity(Intent.createChooser(shareIntent, sharedData.getTitle()));
 	}
