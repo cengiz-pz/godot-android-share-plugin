@@ -72,7 +72,7 @@ func share_file(a_path: String, a_mime_type: String, a_title: String, a_subject:
 				.set_subject(a_subject)
 				.set_content(a_content)
 				.set_mime_type(a_mime_type)
-				.set_image_path(a_path)
+				.set_file_path(a_path)
 				.get_raw_data()
 		)
 	else:

@@ -45,7 +45,7 @@ public class SharePlugin extends GodotPlugin {
 		shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, sharedData.getSubject());
 		shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, sharedData.getContent());
 
-		String path = sharedData.getImagePath();
+		String path = sharedData.getFilePath();
 		if (path != null && !path.isEmpty()) {
 			File f = new File(path);
 
