@@ -14,7 +14,8 @@ var _plugin_singleton: Object
 
 
 func _ready() -> void:
-	_update_plugin()
+	if OS.get_name() == "Android":
+		_update_plugin()
 
 
 func _notification(a_what: int) -> void:
