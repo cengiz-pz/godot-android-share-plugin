@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://l8x26cvum7uc"]
 
-[ext_resource type="Script" path="res://Main.gd" id="1_2cf00"]
+[ext_resource type="Script" uid="uid://bs7h6e1sy3ff2" path="res://Main.gd" id="1_2cf00"]
 [ext_resource type="Texture2D" uid="uid://m4tg7rfoxxbk" path="res://share.png" id="2_gmsde"]
-[ext_resource type="Script" path="res://addons/SharePlugin/Share.gd" id="3_i1lxr"]
+[ext_resource type="Script" uid="uid://pjltmar3eysq" path="res://addons/SharePlugin/Share.gd" id="3_i1lxr"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_2cf00")
