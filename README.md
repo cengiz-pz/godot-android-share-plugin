@@ -23,6 +23,7 @@ Steps:
 	- keep `Ignore asset root` checkbox checked
 	- click `Install` button
 - enable the plugin via the `Plugins` tab of `Project->Project Settings...` menu, in the Godot Editor
+- remove/replace the `$genname` token from the `package/unique_name` field of your project's Android export settings.
 
 ### ![](share/addon_template/icon.png?raw=true) Installing manually
 Steps:
@@ -30,6 +31,7 @@ Steps:
 - unzip the release archive
 - copy to your Godot project's root directory
 - enable the plugin via the `Plugins` tab of `Project->Project Settings...` menu, in the Godot Editor
+- remove/replace the `$genname` token from the `package/unique_name` field of your project's Android export settings
 
 ## ![](share/addon_template/icon.png?raw=true) Usage
 Add a `Share` node to your scene and follow the following steps:
@@ -48,6 +50,10 @@ Add a `Share` node to your scene and follow the following steps:
 	- `adb logcat *:E` to see only errors
 	- `adb logcat | grep 'godot|somethingElse'` to filter using more than one string at the same time
 - use `#> adb.exe logcat | select-string "godot"` on powershell (Windows)
+
+
+### Don't use `$genname` token for package name in Godot's project settings
+Using the default setting of `com.example.$genname` for package name (`package/unique_name`) in your Godot project's Android Export settings will not work with this plugin as the `$genname` token is not replaced before an Android export. Removing the `$genname` token from the `package/unique_name` is necessary for this plugin to work.
 
 Also check out:
 https://docs.godotengine.org/en/stable/tutorials/platform/android/android_plugin.html#troubleshooting
