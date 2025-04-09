@@ -1,0 +1,4 @@
+[submodule "addon"]
+	path = share/addon_template
+	url = https://github.com/cengiz-pz/godot-share-addon.git
+	branch = main
