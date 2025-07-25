@@ -1,5 +1,11 @@
+$${\color{red}25/07/2025: \space This \space repository \space has \space moved \space under \space the \space Godot \space SDK \space Integrations \space Github \space organization. \space Future \space releases \space will \space be \space published \space at \space the \space new \space repository:}$$
+
+### https://github.com/godot-sdk-integrations/godot-share
+
+<br/><br/>
+
 <p align="center">
-  <img width="256" height="256" src="demo/share.png">
+	<img width="256" height="256" src="demo/share.png">
 </p>
 
 ---
