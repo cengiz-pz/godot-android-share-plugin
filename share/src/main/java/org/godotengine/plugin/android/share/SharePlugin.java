@@ -63,9 +63,8 @@ public class SharePlugin extends GodotPlugin {
 		}
 
 		String mime_type = sharedData.getMimeType();
-		if (mime_type != null) {
-			// only used as fallback
-			mime_type = MIME_TYPE_TEXT;
+		if (mime_type == null) {
+			mime_type = MIME_TYPE_TEXT; // fallback to text if not set
 		}
 		shareIntent.setType(mime_type);
 
